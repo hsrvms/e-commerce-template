@@ -1,14 +1,17 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ConfigModule } from '@nestjs/config';
-import { configuration } from '../config/configuration';
+import { configuration } from 'config/configuration';
+import { validationSchema } from 'config/validation';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: `${process.cwd()}/config/env/${process.env.NODE_ENV}`,
+      envFilePath: `${process.cwd()}/config/env/${process.env.NODE_ENV}.env`,
+      isGlobal: true,
       load: [configuration],
+      validationSchema,
     }),
   ],
   controllers: [AppController],
