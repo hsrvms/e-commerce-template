@@ -16,5 +16,5 @@ export const validationSchema = Joi.object({
   ),
   JWT_SECRET: Joi.string().required(),
   JWT_EXPIRES_IN: Joi.string().required(),
-  PORT: Joi.number().default(3000),
+  PORT: Joi.number().default(8000),
 });
