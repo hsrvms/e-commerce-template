@@ -7,7 +7,7 @@ enum Environment {
   PROV = 'provision',
 }
 
-export const validationSchema = Joi.object({
+export const configValidationSchema = Joi.object({
   NODE_ENV: Joi.string().valid(
     Environment.DEV,
     Environment.PROD,
@@ -17,4 +17,6 @@ export const validationSchema = Joi.object({
   JWT_SECRET: Joi.string().required(),
   JWT_EXPIRES_IN: Joi.string().required(),
   PORT: Joi.number().default(8000),
+  REDIS_HOST: Joi.string().required(),
+  REDIS_PORT: Joi.number().default(6379),
 });
