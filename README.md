@@ -42,7 +42,7 @@ $ npm run test:cov
 Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
 - A comprehensive [local development guide](https://www.tomray.dev/nestjs-docker-compose-postgres#add-redis-to-docker-composez) using Docker with this project. 
 - To create optimized Dockerfile for production check [this guide](https://www.tomray.dev/nestjs-docker-production). 
-- Redis usage with NestJS: [Guide1](https://medium.com/@mut1aq/using-redis-in-nestjs-8ca1a009670f) [Guide2](https://www.tomray.dev/nestjs-caching-redis)
+- Redis usage with NestJS: [Guide1](https://medium.com/@mut1aq/using-redis-in-nestjs-8ca1a009670f) | [Guide2](https://www.tomray.dev/nestjs-caching-redis)
 
 ## Multiple Env Config
 .env files has been choosen by the current `NODE_ENV` situation. If `NODE_ENV=development` the choosen env file would be `./config/env/development.env`
