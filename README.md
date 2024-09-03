@@ -1,3 +1,4 @@
+
 ## Description
 
 Backend template written in TypeScript with NestJS
@@ -39,8 +40,11 @@ $ npm run test:cov
 ## Resources
 
 Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
+- A comprehensive [local development guide](https://www.tomray.dev/nestjs-docker-compose-postgres#add-redis-to-docker-composez) using Docker with this project. 
+- To create optimized Dockerfile for production check [this guide](https://www.tomray.dev/nestjs-docker-production). 
+- [Redis usage with NestJS](https://medium.com/@mut1aq/using-redis-in-nestjs-8ca1a009670f)
 
 ## Multiple Env Config
 .env files has been choosen by the current `NODE_ENV` situation. If `NODE_ENV=development` the choosen env file would be `./config/env/development.env`
 
-After changing the .env files they should be validated in `./config/validation.ts` file for better development experience. Also they can be added into `./config/configuration.ts` file to use them easily. This [documentation](https://docs.nestjs.com/techniques/configuration) would be helpful for those who are new in NestJS.
+After changing the .env files they should be validated in `./config/validation.ts` file for better development experience. Also they can be added into `./config/FILE_NAME.config.ts` file to use them easily. This [documentation](https://docs.nestjs.com/techniques/configuration) would be helpful for those who are new in NestJS.
