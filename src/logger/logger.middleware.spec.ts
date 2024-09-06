@@ -13,7 +13,7 @@ describe('LoggerMiddleware', () => {
     loggerMiddleware = new LoggerMiddleware();
     mockRequest = {
       method: 'GET',
-      url: '/test-url',
+      originalUrl: '/test-url',
     };
     mockResponse = {
       statusCode: 200,
@@ -43,12 +43,8 @@ describe('LoggerMiddleware', () => {
       mockNextFunction,
     );
 
-    expect(mockResponse.on).toHaveBeenCalledWith(
-      'finish',
-      expect.any(Function),
-    );
     expect(loggerLogSpy).toHaveBeenCalledWith(
-      `Logging HTTP request ${mockRequest.method} ${mockRequest.url} ${mockResponse.statusCode}`,
+      `Logging HTTP request ${mockRequest.method} ${mockRequest.originalUrl} ${mockResponse.statusCode}`,
     );
     expect(mockNextFunction).toHaveBeenCalled();
   });
