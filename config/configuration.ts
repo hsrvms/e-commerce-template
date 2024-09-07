@@ -12,4 +12,8 @@ export default () => ({
     port: process.env.REDIS_PORT,
     ttl: process.env.REDIS_TTL,
   },
+
+  i18n: {
+    fallbackLanguage: process.env.FALLBACK_LANGUAGE,
+  },
 });
