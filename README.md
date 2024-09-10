@@ -22,6 +22,12 @@ $ docker compose up --build
 
 # for detached terminal
 $ docker compose up -d
+
+# to watch all logs for all containers
+$ docker compose logs -f
+
+# to watch the specific container <service_name> should be used as last argument
+$ docker compose logs -f server
 ```
 
 ## Run tests
