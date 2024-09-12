@@ -1,11 +1,13 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { LoggerMiddleware } from './logger/logger.middleware';
+import { LoggerMiddleware } from 'src/logger/logger.middleware';
 import { CustomConfigModule } from 'config/customConfig.module';
+import { HealthModule } from 'src/health/health.module';
+import { DatabaseModule } from 'src/database/database.module';
 
 @Module({
-  imports: [CustomConfigModule],
+  imports: [CustomConfigModule, HealthModule, DatabaseModule],
   controllers: [AppController],
   providers: [AppService],
 })
