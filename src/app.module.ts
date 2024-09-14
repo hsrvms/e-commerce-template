@@ -5,9 +5,10 @@ import { LoggerMiddleware } from 'src/logger/logger.middleware';
 import { CustomConfigModule } from 'config/customConfig.module';
 import { HealthModule } from 'src/health/health.module';
 import { DatabaseModule } from 'src/database/database.module';
+import { ItemsModule } from './items/items.module';
 
 @Module({
-  imports: [CustomConfigModule, HealthModule, DatabaseModule],
+  imports: [CustomConfigModule, HealthModule, DatabaseModule, ItemsModule],
   controllers: [AppController],
   providers: [AppService],
 })
