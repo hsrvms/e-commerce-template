@@ -6,10 +6,20 @@ import { CustomConfigModule } from 'config/customConfig.module';
 import { HealthModule } from 'src/health/health.module';
 import { DatabaseModule } from 'src/database/database.module';
 import { ItemsModule } from './items/items.module';
+import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
+import { UsersController } from './users/users.controller';
 
 @Module({
-  imports: [CustomConfigModule, HealthModule, DatabaseModule, ItemsModule],
-  controllers: [AppController],
+  imports: [
+    CustomConfigModule,
+    HealthModule,
+    DatabaseModule,
+    ItemsModule,
+    AuthModule,
+    UsersModule,
+  ],
+  controllers: [AppController, UsersController],
   providers: [AppService],
 })
 export class AppModule implements NestModule {

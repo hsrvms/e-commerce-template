@@ -22,11 +22,13 @@ export class AllExceptionsFilter implements ExceptionFilter {
     const { httpAdapter } = this.httpAdapterHost;
 
     const ctx = host.switchToHttp();
+    const exceptionResponse = exception.getResponse();
+    this.logger.debug('exceptionResponse', exceptionResponse);
     const i18nContext = I18nContext.current();
     const lang = i18nContext ? i18nContext.lang : 'en';
 
-    const message = exception.message
-      ? exception.message
+    const message = exceptionResponse.message
+      ? exceptionResponse.message
       : 'errors.GENERIC_ERROR';
     const translatedMessage = await this.i18n.t(message, { lang });
 
@@ -40,6 +42,7 @@ export class AllExceptionsFilter implements ExceptionFilter {
       timestamp: new Date().toISOString(),
       path: httpAdapter.getRequestUrl(ctx.getRequest()),
       error: translatedMessage,
+      reasons: exceptionResponse.reasons,
     };
 
     this.logger.error(
