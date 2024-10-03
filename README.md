@@ -56,5 +56,5 @@ Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about th
 After changing the .env files they should be validated in `./config/validation.ts` file for better development experience. Also they can be added into `./config/FILE_NAME.config.ts` file to use them easily. This [documentation](https://docs.nestjs.com/techniques/configuration) would be helpful for those who are new in NestJS.
 
 ## Features
-1. [Auth]()
-2. [Users]()
+1. [Auth](src/auth)
+2. [Users](src/users)
