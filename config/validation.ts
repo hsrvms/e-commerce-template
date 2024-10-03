@@ -17,7 +17,7 @@ export const configValidationSchema = Joi.object({
   APP_PORT: Joi.number().default(8000),
 
   JWT_SECRET: Joi.string().required(),
-  JWT_EXPIRES_IN: Joi.string().required(),
+  JWT_EXPIRES_IN: Joi.number().required(),
 
   REDIS_HOST: Joi.string().required(),
   REDIS_PORT: Joi.number().default(6379),

@@ -8,7 +8,6 @@ import { I18nTranslations } from 'src/generated/i18n.generated';
 describe('AppController', () => {
   let appController: AppController;
   let appService: AppService;
-  let i18nService: I18nService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -31,7 +30,6 @@ describe('AppController', () => {
 
     appController = module.get<AppController>(AppController);
     appService = module.get<AppService>(AppService);
-    i18nService = module.get<I18nService>(I18nService);
   });
 
   it('should be defined', () => {

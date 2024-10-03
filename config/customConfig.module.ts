@@ -42,6 +42,7 @@ import { configValidationSchema } from './validation';
     }),
     CacheModule.registerAsync({
       useClass: RedisConfigService,
+      isGlobal: true,
     }),
   ],
 })

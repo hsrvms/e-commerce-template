@@ -1,6 +1,12 @@
 {
   "GENERIC_ERROR": "An unexpected error occured.",
-  "NOT_FOUND": "Resource not found",
-  "UNAUTHORIZED": "Unauthorized access",
-  "USER_NOT_FOUND": "User not found"
+  "NOT_FOUND": "Resource not found.",
+  "UNAUTHORIZED": "Unauthorized access.",
+  "USER_NOT_FOUND": "User not found.",
+  "PASSWORD_NOT_MATCH": "Credentials are not valid.",
+  "EMAIL_IS_TAKEN": "The email provided is already associated with an existing account.",
+  "CANNOT_CHANGE_TO_SAME_STATE": "The account you are trying to modify already has such state.",
+  "ACCOUNT_WAS_DELETED": "The account was previously deleted. If you wish to login you will need to create a new account.",
+  "PASSWORD_IS_WEAK": "The password you provided is weak.",
+  "TOKEN_IS_BLACKLISTED": "The token has been invalidated."
 }

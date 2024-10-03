@@ -1,0 +1,99 @@
+The disableGPU setting is set to undefined
+Not disabling GPU
+Gtk-Message: 15:34:24.479: Failed to load module "canberra-gtk-module"
+Gtk-Message: 15:34:24.479: Failed to load module "pk-gtk-module"
+Gtk-Message: 15:34:24.480: Failed to load module "canberra-gtk-module"
+Gtk-Message: 15:34:24.480: Failed to load module "pk-gtk-module"
+Main: Starting cleanup of stale files
+[671449:0920/153424.513365:ERROR:angle_platform_impl.cc(44)] Display.cpp:1052 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+ERR: Display.cpp:1052 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[671449:0920/153424.513589:ERROR:gl_display.cc(515)] EGL Driver message (Critical) eglInitialize: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[671449:0920/153424.513665:ERROR:gl_display.cc(786)] eglInitialize OpenGL failed with error EGL_NOT_INITIALIZED, trying next display type
+[671449:0920/153424.513997:ERROR:angle_platform_impl.cc(44)] Display.cpp:1052 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+ERR: Display.cpp:1052 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[671449:0920/153424.514102:ERROR:gl_display.cc(515)] EGL Driver message (Critical) eglInitialize: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[671449:0920/153424.514161:ERROR:gl_display.cc(786)] eglInitialize OpenGLES failed with error EGL_NOT_INITIALIZED
+[671449:0920/153424.514214:ERROR:gl_display.cc(820)] Initialization of all EGL display types failed.
+[671449:0920/153424.514272:ERROR:gl_ozone_egl.cc(26)] GLDisplayEGL::Initialize failed.
+[671449:0920/153424.515849:ERROR:angle_platform_impl.cc(44)] Display.cpp:1052 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+ERR: Display.cpp:1052 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[671449:0920/153424.516522:ERROR:gl_display.cc(515)] EGL Driver message (Critical) eglInitialize: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[671449:0920/153424.516608:ERROR:gl_display.cc(786)] eglInitialize OpenGL failed with error EGL_NOT_INITIALIZED, trying next display type
+[671449:0920/153424.516807:ERROR:angle_platform_impl.cc(44)] Display.cpp:1052 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+ERR: Display.cpp:1052 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[671449:0920/153424.516875:ERROR:gl_display.cc(515)] EGL Driver message (Critical) eglInitialize: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[671449:0920/153424.516938:ERROR:gl_display.cc(786)] eglInitialize OpenGLES failed with error EGL_NOT_INITIALIZED
+[671449:0920/153424.516994:ERROR:gl_display.cc(820)] Initialization of all EGL display types failed.
+[671449:0920/153424.517048:ERROR:gl_ozone_egl.cc(26)] GLDisplayEGL::Initialize failed.
+[671449:0920/153424.518819:ERROR:viz_main_impl.cc(196)] Exiting GPU process due to errors during initialization
+Main: Cleanup of stale files completed
+Main~createDefaultWorkingDir - Default working dir creation already attempted
+[671482:0920/153424.570559:ERROR:angle_platform_impl.cc(44)] Display.cpp:1052 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+ERR: Display.cpp:1052 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[671482:0920/153424.570711:ERROR:gl_display.cc(515)] EGL Driver message (Critical) eglInitialize: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[671482:0920/153424.570782:ERROR:gl_display.cc(786)] eglInitialize OpenGL failed with error EGL_NOT_INITIALIZED, trying next display type
+[671482:0920/153424.570973:ERROR:angle_platform_impl.cc(44)] Display.cpp:1052 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+ERR: Display.cpp:1052 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[671482:0920/153424.571048:ERROR:gl_display.cc(515)] EGL Driver message (Critical) eglInitialize: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[671482:0920/153424.571106:ERROR:gl_display.cc(786)] eglInitialize OpenGLES failed with error EGL_NOT_INITIALIZED
+[671482:0920/153424.571150:ERROR:gl_display.cc(820)] Initialization of all EGL display types failed.
+[671482:0920/153424.571207:ERROR:gl_ozone_egl.cc(26)] GLDisplayEGL::Initialize failed.
+[671482:0920/153424.572629:ERROR:angle_platform_impl.cc(44)] Display.cpp:1052 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+ERR: Display.cpp:1052 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[671482:0920/153424.572716:ERROR:gl_display.cc(515)] EGL Driver message (Critical) eglInitialize: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[671482:0920/153424.572775:ERROR:gl_display.cc(786)] eglInitialize OpenGL failed with error EGL_NOT_INITIALIZED, trying next display type
+[671482:0920/153424.572906:ERROR:angle_platform_impl.cc(44)] Display.cpp:1052 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+ERR: Display.cpp:1052 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[671482:0920/153424.572984:ERROR:gl_display.cc(515)] EGL Driver message (Critical) eglInitialize: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[671482:0920/153424.573032:ERROR:gl_display.cc(786)] eglInitialize OpenGLES failed with error EGL_NOT_INITIALIZED
+[671482:0920/153424.573086:ERROR:gl_display.cc(820)] Initialization of all EGL display types failed.
+[671482:0920/153424.573127:ERROR:gl_ozone_egl.cc(26)] GLDisplayEGL::Initialize failed.
+[671482:0920/153424.574319:ERROR:viz_main_impl.cc(196)] Exiting GPU process due to errors during initialization
+1726835664583 main info "Booting Postman 11.13.0, linux-6.10.7-200.fc40.x86_64 on x64"
+1726835664583 main info "EventBus~initialize - Success"
+1726835664586 main info "Proxy configuration has not been setup"
+1726835664587 main info "CloudProxyManager~init - Success"
+MESA-LOADER: failed to open radeonsi (search paths /snap/postman/277/usr/lib/x86_64-linux-gnu/dri)
+failed to load driver: radeonsi
+MESA-LOADER: failed to open kms_swrast (search paths /snap/postman/277/usr/lib/x86_64-linux-gnu/dri)
+failed to load driver: kms_swrast
+MESA-LOADER: failed to open swrast (search paths /snap/postman/277/usr/lib/x86_64-linux-gnu/dri)
+failed to load swrast driver
+1726835664624 main info "performShellDataMigration: Migration has already been done. Bailing out"
+1726835664630 main info "UpdateHandler~init - Success"
+1726835664630 main info "LeaderSelection: Initialized successfully"
+1726835664631 main info "VersionDependencyService: Initialized successfully"
+1726835664634 main info "LinuxAutoUpdater~Cleanup - Initial cleanup successful"
+1726835664651 main info "GPU detected VID 0 DID 0 ACTIVE false"
+1726835664654 main info "newAccountRegionPreferenceService~getPreferenceWithFallback - Preference not found in storage."
+1726835664655 main info "newAccountRegionPreferenceService~getToggleMenuTemplate - Using preference:","useUSRegion"
+1726835664678 main info "shellController~init: Success"
+1726835664683 main info "shellMeta~init: Success"
+1726835664684 main info "partitionMigrationService: State of V7 partition:"
+1726835664684 main info "partitionMigrationService: V7 partitions",[]
+1726835664684 main info "partitionMigrationService~rectifyNamespaceOfScratchPadPartition: There is no partition with scratchpad namespace"
+1726835664684 main info "partitionMigrationService~rectifyNamespaceOfScratchPadPartition: There is no transit partition which could have been used for scratchpad"
+1726835664684 main info "partitionMigrationService~init: Success"
+1726835664698 main info "partitionMigrationService~runV8PartitionsIntegrity: Two way migration~ removing the following partitions from v8",[]
+1726835664704 main info "userPartitionService~getRecentV8UserPartition: recent v8 user context partition ","49433015-6abb-4b72-9be0-7ba543e06a02"
+1726835664704 main info "userPartitionService~_rectifyTheActivePartitionOfApplication: Setting the active partition to ","49433015-6abb-4b72-9be0-7ba543e06a02"
+1726835664714 main info "userPartitionService~init: Success"
+1726835664733 main info "userPartitionService: State of v8 partition system:"
+1726835664736 main info "shell~init~getPartitionToLoad: loading active partition"
+1726835664741 main info "userPartitionService: List of partitions:",[{"partitionId":"120a2623-1a5f-4c7a-9b91-c521182186ae","namespace":"users","userId":"34116117","teamId":"6145615","lastUpdated":"2024-07-24T19:35:36.938Z"},{"partitionId":"49433015-6abb-4b72-9be0-7ba543e06a02","namespace":"users","userId":"23245714","teamId":"5938655","lastUpdated":"2024-09-18T17:09:46.603Z"},{"partitionId":"2439928f-0d83-46b7-9245-2548da0ec2b5","namespace":"scratchPad","userId":0,"teamId":0,"isDirty":false}]
+1726835664741 main info "userPartitionService: users global meta:",{}
+1726835664743 main info "Main:windowManager~newRequesterWindow: Fetch and update runtime config: us"
+1726835666057 main info "Main~getRemoteInitPath:: "
+INTERCEPTOR CONNECTIVITY: Connecting to Interceptor Bridge
+IPCClient ~ WindowHandler: New event is received { type: 'window-opened' }
+1726835666143 main info "windowManager: First requester booted successfully."
+1726835666143 main info "windowManager~restoreWindows: Restoring requester windows"
+1726835666144 main info "Main~AppEvents - Received booted event for process requester.Version 11.13.1 UI Version: 11.13.1-ui-240919-0917 Desktop Platform Version: 11.13.0"
+1726835666256 main info "Main~getRemoteInitPath:: "
+1726835666508 main info "Main~getPlatformLaunchPerfMetrics"
+1726835666827 main info "INTERCEPTOR CONNECTIVITY: Attempting to start websocket server on port 15611"
+1726835667615 main info "Main - model-events~user - (user, bootstrapUser) received"
+1726835667615 main info "model-events~user - bootstrapUser received"
+1726835668676 main info "RuntimeIPCAgent~started: Success"
+IPCClient ~ WindowHandler: New event is received { type: 'blur', windowId: 1 }
+1726835672547 main info "Quitting app"

@@ -10,6 +10,21 @@ export type I18nTranslations = {
         "NOT_FOUND": string;
         "UNAUTHORIZED": string;
         "USER_NOT_FOUND": string;
+        "PASSWORD_NOT_MATCH": string;
+        "EMAIL_IS_TAKEN": string;
+        "CANNOT_CHANGE_TO_SAME_STATE": string;
+        "ACCOUNT_WAS_DELETED": string;
+        "PASSWORD_IS_WEAK": string;
+        "TOKEN_IS_BLACKLISTED": string;
+    };
+    "info": {
+        "SUCCESSFULLY_LOGGED_OUT": string;
+    };
+    "password": {
+        "MIN_LENGTH": string;
+        "UPPERCASE_REQUIRED": string;
+        "NUMBER_REQUIRED": string;
+        "SPECIAL_CHAR_REQUIRED": string;
     };
     "test": {
         "hello": string;

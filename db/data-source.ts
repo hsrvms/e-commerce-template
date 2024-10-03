@@ -6,8 +6,6 @@ const envPath = `${process.cwd()}/config/env/${process.env.NODE_ENV}.env`;
 config({ path: envPath });
 
 const configService = new ConfigService();
-console.log('db.host:', configService.get<string>('POSTGRES_HOST'));
-console.log('path:', envPath);
 
 export default new DataSource({
   type: 'postgres',

@@ -1,10 +1,13 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-export class Item {
+export class LoginRecord {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column()
-  name: string;
+  userId: string;
+
+  @Column()
+  timestamp: string;
 }
