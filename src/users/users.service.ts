@@ -48,6 +48,14 @@ export class UsersService {
     return user;
   }
 
+  async getProfile(userId: string): Promise<User> {
+    const user = await this.usersRepository.findOneBy({ id: userId });
+    if (!user) {
+      throw new UserNotFoundError();
+    }
+    return user;
+  }
+
   async changeAccountStatus(
     changeStatusRequest: ChangeStatusRequest,
   ): Promise<User> {

@@ -1,5 +1,6 @@
 import {
   Body,
+  ClassSerializerInterceptor,
   Controller,
   Get,
   HttpCode,
@@ -8,20 +9,21 @@ import {
   Patch,
   Request,
   UseGuards,
+  UseInterceptors,
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { ChangeAccountStatusDto } from './dto';
 import { User } from './entities';
-import { JwtAuthGuard } from 'src/auth';
+import { JwtAuthGuard } from 'src/guards';
 
 @Controller('users')
 @UsePipes(new ValidationPipe())
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  // @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard)
   @Patch(':id/status-update')
   @HttpCode(HttpStatus.OK)
   async updateStatus(
@@ -36,9 +38,12 @@ export class UsersController {
   }
 
   @Get('profile')
-  // @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.OK)
-  async profile(@Request() req: any) {
-    return req.user;
+  @UseInterceptors(ClassSerializerInterceptor)
+  async profile(@Request() req: any): Promise<User> {
+    const user = req.user;
+    const result = await this.usersService.getProfile(user.id);
+    return result;
   }
 }

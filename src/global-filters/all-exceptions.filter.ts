@@ -8,6 +8,15 @@ import {
 } from '@nestjs/common';
 import { HttpAdapterHost } from '@nestjs/core';
 import { I18nService, I18nContext } from 'nestjs-i18n';
+import { mapWarningsToI18nKeys } from 'src/common/helpers/map-warnings-to-i18n-keys.helper';
+
+type ErrorResponseBody = {
+  statusCode: number;
+  timestamp: string;
+  path: string;
+  error: string | unknown;
+  warnings?: string[];
+};
 
 @Catch()
 export class AllExceptionsFilter implements ExceptionFilter {
@@ -23,7 +32,6 @@ export class AllExceptionsFilter implements ExceptionFilter {
 
     const ctx = host.switchToHttp();
     const exceptionResponse = exception.getResponse();
-    this.logger.debug('exceptionResponse', exceptionResponse);
     const i18nContext = I18nContext.current();
     const lang = i18nContext ? i18nContext.lang : 'en';
 
@@ -32,23 +40,38 @@ export class AllExceptionsFilter implements ExceptionFilter {
       : 'errors.GENERIC_ERROR';
     const translatedMessage = await this.i18n.t(message, { lang });
 
+    const warnings = exceptionResponse.warnings;
+    let translatedWarnings;
+    if (warnings) {
+      translatedWarnings = await this._translateWarnings(warnings);
+    }
     const httpStatus =
       exception instanceof HttpException
         ? exception.getStatus()
         : HttpStatus.INTERNAL_SERVER_ERROR;
 
-    const responseBody = {
+    const responseBody: ErrorResponseBody = {
       statusCode: httpStatus,
       timestamp: new Date().toISOString(),
       path: httpAdapter.getRequestUrl(ctx.getRequest()),
       error: translatedMessage,
-      reasons: exceptionResponse.reasons,
+      warnings: translatedWarnings,
     };
 
     this.logger.error(
-      `Exception: ${exception?.message}, status: ${httpStatus}, stack: ${exception?.stack}`,
+      `Exception: ${exception?.message}, status: ${httpStatus}`,
     );
 
     httpAdapter.reply(ctx.getResponse(), responseBody, httpStatus);
+  }
+
+  private async _translateWarnings(warnings: string[]): Promise<string[]> {
+    const warningKeys: string[] = mapWarningsToI18nKeys(warnings);
+    const i18nContext = I18nContext.current();
+    const lang = i18nContext ? i18nContext.lang : 'en';
+    const translatedWarnings: string[] = await Promise.all(
+      warningKeys.map((key) => this.i18n.t(key, { lang })),
+    );
+    return translatedWarnings;
   }
 }

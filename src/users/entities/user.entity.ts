@@ -1,6 +1,7 @@
 import { BaseEntity } from 'src/database/base.entity';
 import { Column, Entity } from 'typeorm';
-import { AccountStates } from '../enums';
+import { AccountStates, UserRoles } from '../enums';
+import { Exclude } from 'class-transformer';
 
 @Entity({ name: 'users' })
 export class User extends BaseEntity<User> {
@@ -11,8 +12,12 @@ export class User extends BaseEntity<User> {
   username: string;
 
   @Column({ length: 255 })
+  @Exclude()
   password: string;
 
-  @Column({ default: AccountStates.ACTIVE })
-  accountState: number;
+  @Column({ enum: UserRoles, default: UserRoles.USER })
+  role: string;
+
+  @Column({ enum: AccountStates, default: AccountStates.ACTIVE })
+  accountState: string;
 }

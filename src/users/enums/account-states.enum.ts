@@ -1,5 +1,5 @@
 export enum AccountStates {
-  ACTIVE = 1,
-  INACTIVE = 2,
-  DELETED = 3,
+  ACTIVE = 'active',
+  INACTIVE = 'inactive',
+  DELETED = 'deleted',
 }

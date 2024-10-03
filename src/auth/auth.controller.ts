@@ -1,17 +1,18 @@
 import {
   Body,
+  ClassSerializerInterceptor,
   Controller,
-  Get,
   HttpCode,
   HttpStatus,
   Post,
   Request,
   UseGuards,
+  UseInterceptors,
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
 import { SignupDto } from './dto';
-import { JwtAuthGuard, LocalAuthGuard } from './guards';
+import { LocalAuthGuard } from '../guards';
 import { AuthService } from './services/auth.service';
 
 @Controller('auth')
@@ -21,6 +22,7 @@ export class AuthController {
 
   @Post('signup')
   @HttpCode(HttpStatus.CREATED)
+  @UseInterceptors(ClassSerializerInterceptor)
   async signup(@Body() signupDto: SignupDto) {
     return this.authService.signUp(signupDto);
   }
@@ -30,12 +32,5 @@ export class AuthController {
   @UseGuards(LocalAuthGuard)
   async login(@Request() req: any) {
     return this.authService.login(req.user);
-  }
-
-  @Get('profile')
-  @HttpCode(HttpStatus.OK)
-  @UseGuards(JwtAuthGuard)
-  getProfile(@Request() req: any) {
-    return req.user;
   }
 }
