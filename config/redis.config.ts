@@ -13,7 +13,7 @@ export class RedisConfigService implements CacheOptionsFactory {
       store: redisStore,
       host: this.configService.get<string>('redis.host'),
       port: this.configService.get<number>('redis.port'),
-      ttl: this.configService.get<number>('redis.ttl') || 30,
+      ttl: this.configService.get<number>('redis.ttl') || 60,
     };
   }
 }

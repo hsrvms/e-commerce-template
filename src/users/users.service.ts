@@ -6,11 +6,10 @@ import { User } from './entities';
 import {
   CannotChangeToSameStateError,
   EmailIsTakenError,
-  PasswordNotMatchError,
   UserNotFoundError,
 } from './errors';
-import { encrypt, matchPassword } from './helpers';
 import { ChangeStatusRequest } from './interfaces';
+import { encrypt, verifyPassword } from 'src/common';
 
 @Injectable()
 export class UsersService {
@@ -44,7 +43,7 @@ export class UsersService {
       throw new UserNotFoundError();
     }
 
-    await this._verifyPassword(loginDto.password, user.password);
+    await verifyPassword(loginDto.password, user.password);
     return user;
   }
 
@@ -67,7 +66,7 @@ export class UsersService {
       throw new UserNotFoundError();
     }
 
-    await this._verifyPassword(changeStatusRequest.password, user.password);
+    await verifyPassword(changeStatusRequest.password, user.password);
 
     if (user.accountState === changeStatusRequest.state) {
       throw new CannotChangeToSameStateError();
@@ -76,19 +75,5 @@ export class UsersService {
     user.accountState = changeStatusRequest.state;
     const result = this.usersRepository.save(user);
     return result;
-  }
-
-  private async _verifyPassword(
-    plainTextPassword: string,
-    hashedPassword: string,
-  ): Promise<void> {
-    const passwordMatch = await matchPassword(
-      plainTextPassword,
-      hashedPassword,
-    );
-
-    if (!passwordMatch) {
-      throw new PasswordNotMatchError();
-    }
   }
 }

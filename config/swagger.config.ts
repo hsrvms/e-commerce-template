@@ -3,6 +3,7 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 export function setupSwagger(app: INestApplication): void {
   const config = new DocumentBuilder()
+    .addBearerAuth()
     .setTitle('Backend Template')
     .setDescription('Backend Template API Description')
     .setVersion('1.0')

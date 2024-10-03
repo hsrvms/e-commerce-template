@@ -5,7 +5,6 @@ import { LoggerMiddleware } from 'src/logger/logger.middleware';
 import { CustomConfigModule } from 'config/customConfig.module';
 import { HealthModule } from 'src/health/health.module';
 import { DatabaseModule } from 'src/database/database.module';
-import { ItemsModule } from './items/items.module';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { UsersController } from './users/users.controller';
@@ -15,7 +14,6 @@ import { UsersController } from './users/users.controller';
     CustomConfigModule,
     HealthModule,
     DatabaseModule,
-    ItemsModule,
     AuthModule,
     UsersModule,
   ],

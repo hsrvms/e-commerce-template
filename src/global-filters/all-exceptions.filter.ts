@@ -8,7 +8,7 @@ import {
 } from '@nestjs/common';
 import { HttpAdapterHost } from '@nestjs/core';
 import { I18nService, I18nContext } from 'nestjs-i18n';
-import { mapWarningsToI18nKeys } from 'src/common/helpers/map-warnings-to-i18n-keys.helper';
+import { mapWarningsToI18nKeys } from 'src/common';
 
 type ErrorResponseBody = {
   statusCode: number;
@@ -58,9 +58,7 @@ export class AllExceptionsFilter implements ExceptionFilter {
       warnings: translatedWarnings,
     };
 
-    this.logger.error(
-      `Exception: ${exception?.message}, status: ${httpStatus}`,
-    );
+    this.logger.error(`Exception: ${translatedMessage}, status: ${httpStatus}`);
 
     httpAdapter.reply(ctx.getResponse(), responseBody, httpStatus);
   }

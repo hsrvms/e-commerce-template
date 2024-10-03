@@ -1,4 +1,5 @@
 import { genSalt, hash, compare } from 'bcryptjs';
+import { PasswordNotMatchError } from 'src/users';
 
 const SALT_ROUNDS = 10;
 
@@ -14,3 +15,14 @@ export const matchPassword = async (
 ) => {
   return await compare(plainTextPassword, hashedPassword);
 };
+
+export async function verifyPassword(
+  plainTextPassword: string,
+  hashedPassword: string,
+): Promise<void> {
+  const passwordMatch = await matchPassword(plainTextPassword, hashedPassword);
+
+  if (!passwordMatch) {
+    throw new PasswordNotMatchError();
+  }
+}

@@ -11,11 +11,22 @@ import {
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
-import { SignupDto } from './dto';
-import { LocalAuthGuard } from '../guards';
+import { LoginDto, SignupDto } from './dto';
+import { JwtAuthGuard, LocalAuthGuard } from '../guards';
 import { AuthService } from './services/auth.service';
+import { I18n, I18nContext } from 'nestjs-i18n';
+import { I18nTranslations } from 'src/generated/i18n.generated';
+import {
+  ApiBearerAuth,
+  ApiBody,
+  ApiOperation,
+  ApiResponse,
+  ApiTags,
+} from '@nestjs/swagger';
+import { User } from 'src/users';
 
 @Controller('auth')
+@ApiTags('Auth')
 @UsePipes(new ValidationPipe())
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
@@ -23,14 +34,55 @@ export class AuthController {
   @Post('signup')
   @HttpCode(HttpStatus.CREATED)
   @UseInterceptors(ClassSerializerInterceptor)
-  async signup(@Body() signupDto: SignupDto) {
-    return this.authService.signUp(signupDto);
+  @ApiOperation({ summary: 'Sign up a new user.' })
+  @ApiResponse({
+    status: 201,
+    description: 'User successfully created',
+    type: User,
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid input data',
+  })
+  @ApiBody({ type: SignupDto })
+  async signup(@Body() signupDto: SignupDto): Promise<User> {
+    return this.authService.signup(signupDto);
   }
 
   @Post('login')
   @HttpCode(HttpStatus.OK)
   @UseGuards(LocalAuthGuard)
-  async login(@Request() req: any) {
+  @ApiOperation({ summary: 'Login a user' })
+  @ApiResponse({
+    status: 201,
+    description: 'User successfully logged in',
+    schema: { example: { access_token: 'your jwt token' } },
+  })
+  @ApiResponse({ status: 403, description: 'Forbidden' })
+  @ApiBody({ type: LoginDto, description: 'User login credentials' })
+  async login(@Request() req: any): Promise<{ access_token: string }> {
     return this.authService.login(req.user);
+  }
+
+  @Post('logout')
+  @HttpCode(HttpStatus.OK)
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
+  @ApiOperation({
+    summary: 'Logs out the authenticated user by blacklisting their JWT token',
+  })
+  @ApiResponse({
+    status: 200,
+    description: 'User successfully logged out',
+    schema: { example: { message: 'Successfuly logged out' } },
+  })
+  @ApiResponse({ status: 401, description: 'Unauthorized' })
+  async logout(
+    @Request() req: any,
+    @I18n() i18n: I18nContext<I18nTranslations>,
+  ) {
+    const token = req.headers.authorization.split(' ')[1];
+    await this.authService.logout(token);
+    return { message: i18n.t('info.SUCCESSFULLY_LOGGED_OUT') };
   }
 }

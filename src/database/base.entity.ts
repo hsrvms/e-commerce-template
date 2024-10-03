@@ -1,4 +1,4 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiHideProperty, ApiProperty } from '@nestjs/swagger';
 import { Exclude } from 'class-transformer';
 import {
   PrimaryGeneratedColumn,
@@ -8,22 +8,26 @@ import {
 } from 'typeorm';
 
 export abstract class BaseEntity<T> {
-  @ApiProperty()
   @PrimaryGeneratedColumn('uuid')
+  @ApiProperty({
+    description: 'The unique identifier of the entity',
+    example: '123e4567-e89b-12d3-a456-426614174000',
+  })
   id: string;
 
-  @ApiProperty()
   @CreateDateColumn()
   @Exclude()
+  @ApiHideProperty()
   created_at: Date;
 
-  @ApiProperty()
   @UpdateDateColumn()
   @Exclude()
+  @ApiHideProperty()
   updated_at: Date;
 
   @DeleteDateColumn()
   @Exclude()
+  @ApiHideProperty()
   deleted_at: Date;
 
   constructor(entity: Partial<T>) {
