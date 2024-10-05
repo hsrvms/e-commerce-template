@@ -7,6 +7,7 @@ import {
   Logger,
 } from '@nestjs/common';
 import { HttpAdapterHost } from '@nestjs/core';
+import { ThrottlerException } from '@nestjs/throttler';
 import { I18nService, I18nContext } from 'nestjs-i18n';
 import { mapWarningsToI18nKeys } from 'src/common';
 
@@ -46,7 +47,8 @@ export class AllExceptionsFilter implements ExceptionFilter {
       translatedWarnings = await this._translateWarnings(warnings);
     }
     const httpStatus =
-      exception instanceof HttpException
+      exception instanceof HttpException ||
+      exception instanceof ThrottlerException
         ? exception.getStatus()
         : HttpStatus.INTERNAL_SERVER_ERROR;
 
@@ -58,7 +60,7 @@ export class AllExceptionsFilter implements ExceptionFilter {
       warnings: translatedWarnings,
     };
 
-    this.logger.error(`Exception: ${translatedMessage}, status: ${httpStatus}`);
+    this.logger.error(`Exception: ${translatedMessage} Status: ${httpStatus}`);
 
     httpAdapter.reply(ctx.getResponse(), responseBody, httpStatus);
   }

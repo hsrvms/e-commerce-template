@@ -16,6 +16,8 @@ export type I18nTranslations = {
         "ACCOUNT_WAS_DELETED": string;
         "PASSWORD_IS_WEAK": string;
         "TOKEN_IS_BLACKLISTED": string;
+        "TOO_MANY_REQUESTS": string;
+        "TOO_MANY_LOGIN_ATTEMPTS": string;
     };
     "info": {
         "SUCCESSFULLY_LOGGED_OUT": string;
