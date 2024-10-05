@@ -24,6 +24,7 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 import { User } from 'src/users';
+import { Throttle } from '@nestjs/throttler';
 
 @Controller('auth')
 @ApiTags('Auth')
@@ -52,6 +53,9 @@ export class AuthController {
   @Post('login')
   @HttpCode(HttpStatus.OK)
   @UseGuards(LocalAuthGuard)
+  @Throttle({
+    long: { limit: 5, ttl: 60 * 1000, blockDuration: 5 * 60 * 1000 },
+  })
   @ApiOperation({ summary: 'Login a user' })
   @ApiResponse({
     status: 201,

@@ -8,5 +8,7 @@
   "CANNOT_CHANGE_TO_SAME_STATE": "The account you are trying to modify already has such state.",
   "ACCOUNT_WAS_DELETED": "The account was previously deleted. If you wish to login you will need to create a new account.",
   "PASSWORD_IS_WEAK": "The password you provided is weak.",
-  "TOKEN_IS_BLACKLISTED": "The token has been invalidated."
+  "TOKEN_IS_BLACKLISTED": "The token has been invalidated.",
+  "TOO_MANY_REQUESTS": "You have exceeded the rate limit. Please try again later.",
+  "TOO_MANY_LOGIN_ATTEMPTS": "Too many login attempts. Please wait at least 5 minutes before trying again."
 }

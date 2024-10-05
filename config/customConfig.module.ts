@@ -1,6 +1,8 @@
 import { CacheModule } from '@nestjs/cache-manager';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { APP_GUARD } from '@nestjs/core';
+import { ThrottlerModule } from '@nestjs/throttler';
 import {
   AcceptLanguageResolver,
   HeaderResolver,
@@ -8,8 +10,10 @@ import {
   QueryResolver,
 } from 'nestjs-i18n';
 import * as path from 'path';
+import { CustomThrottlerGuard } from 'src/guards';
 import configuration from './configuration';
 import { RedisConfigService } from './redis.config';
+import { ThrottlerConfigService } from './throttler.config';
 import { configValidationSchema } from './validation';
 
 @Module({
@@ -44,6 +48,11 @@ import { configValidationSchema } from './validation';
       useClass: RedisConfigService,
       isGlobal: true,
     }),
+    ThrottlerModule.forRootAsync({
+      imports: [ConfigModule],
+      useClass: ThrottlerConfigService,
+    }),
   ],
+  providers: [{ provide: APP_GUARD, useClass: CustomThrottlerGuard }],
 })
 export class CustomConfigModule {}
