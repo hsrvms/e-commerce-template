@@ -13,10 +13,6 @@ import {
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
-import { UsersService } from './users.service';
-import { ChangeAccountStatusDto } from './dto';
-import { User } from './entities';
-import { JwtAuthGuard } from 'src/guards';
 import {
   ApiBearerAuth,
   ApiBody,
@@ -25,6 +21,10 @@ import {
   ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
+import { JwtAuthGuard } from 'src/guards';
+import { ChangeAccountStatusDto } from './dto';
+import { User } from './entities';
+import { UsersService } from './users.service';
 
 @Controller('users')
 @ApiTags('User')
@@ -33,7 +33,6 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Patch(':id/status-update')
-  @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.OK)
   @UseInterceptors(ClassSerializerInterceptor)
   @ApiOperation({ summary: 'Update user account status' })
@@ -68,7 +67,6 @@ export class UsersController {
   }
 
   @Get('profile')
-  @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.OK)
   @UseInterceptors(ClassSerializerInterceptor)
   @ApiOperation({ summary: 'Get user profile' })
