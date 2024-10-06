@@ -8,6 +8,8 @@ import { JwtModule } from '@nestjs/jwt';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { LoginRecord } from './entities';
+import { APP_GUARD } from '@nestjs/core';
+import { JwtAuthGuard } from 'src/guards';
 
 @Module({
   imports: [
@@ -24,6 +26,12 @@ import { LoginRecord } from './entities';
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService, LoginAuditService, LocalStrategy, JwtStrategy],
+  providers: [
+    AuthService,
+    LoginAuditService,
+    LocalStrategy,
+    JwtStrategy,
+    { provide: APP_GUARD, useClass: JwtAuthGuard },
+  ],
 })
 export class AuthModule {}

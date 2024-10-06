@@ -5,7 +5,6 @@ import { JwtAuthGuard, LocalAuthGuard } from 'src/guards';
 import { SignupDto } from './dto';
 import { I18nContext } from 'nestjs-i18n';
 import { I18nTranslations } from 'src/generated/i18n.generated';
-import { Reflector } from '@nestjs/core';
 
 describe('AuthController', () => {
   let controller: AuthController;
@@ -101,14 +100,6 @@ describe('AuthController', () => {
       expect(i18n.t).toHaveBeenCalledWith('info.SUCCESSFULLY_LOGGED_OUT');
       expect(result).toEqual({ message: 'Successfully logged out.' });
       expect(authService.logout).toHaveBeenCalledWith(token);
-    });
-
-    it('should apply JwtAuthGuard to logout route', () => {
-      const guards = Reflect.getMetadata('__guards__', controller.logout);
-
-      expect(guards).toBeDefined();
-      expect(guards).toHaveLength(1);
-      expect(guards[0]).toBe(JwtAuthGuard);
     });
   });
 });

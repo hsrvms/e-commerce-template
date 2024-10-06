@@ -12,7 +12,7 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 import { LoginDto, SignupDto } from './dto';
-import { JwtAuthGuard, LocalAuthGuard } from '../guards';
+import { LocalAuthGuard } from '../guards';
 import { AuthService } from './services/auth.service';
 import { I18n, I18nContext } from 'nestjs-i18n';
 import { I18nTranslations } from 'src/generated/i18n.generated';
@@ -25,6 +25,7 @@ import {
 } from '@nestjs/swagger';
 import { User } from 'src/users';
 import { Throttle } from '@nestjs/throttler';
+import { Public } from './decorators';
 
 @Controller('auth')
 @ApiTags('Auth')
@@ -52,6 +53,7 @@ export class AuthController {
 
   @Post('login')
   @HttpCode(HttpStatus.OK)
+  @Public()
   @UseGuards(LocalAuthGuard)
   @Throttle({
     long: { limit: 5, ttl: 60 * 1000, blockDuration: 5 * 60 * 1000 },
@@ -70,7 +72,6 @@ export class AuthController {
 
   @Post('logout')
   @HttpCode(HttpStatus.OK)
-  @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
   @ApiOperation({
     summary: 'Logs out the authenticated user by blacklisting their JWT token',
