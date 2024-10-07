@@ -35,6 +35,7 @@ export class AuthController {
 
   @Post('signup')
   @HttpCode(HttpStatus.CREATED)
+  @Public()
   @UseInterceptors(ClassSerializerInterceptor)
   @ApiOperation({ summary: 'Sign up a new user.' })
   @ApiResponse({
